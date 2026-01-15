@@ -25,7 +25,7 @@ public class RefreshToken {
 
     private String token;
 
-    private Instant ExpiryDate;
+    private Instant expiryDate;
 
     @OneToOne
     @JoinColumn(
