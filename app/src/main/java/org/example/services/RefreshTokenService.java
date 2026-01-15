@@ -28,4 +28,12 @@ public class RefreshTokenService {
                 .build();
         return refreshTokenRepository.save(refreshToken);
     }
+
+    public RefreshToken verifyExpiration (RefreshToken token) {
+        if (token.getExpiryDate().compareTo(Instant.now())<0) {
+            refreshTokenRepository.delete(token);
+            throw new RuntimeException(token.getToken() + "Refresh token is expired sign in again");
+        }
+        return token;
+    }
 }
