@@ -24,9 +24,12 @@ ext {
 dependencies {
     // Use JUnit test framework.
     testImplementation libs.junit
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
-    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-bootstrap', version: '4.1.1'
+    // Source: https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
+implementation 'org.springframework.boot:spring-boot-starter-web:4.0.1'
+    // Source: https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator
+implementation 'org.springframework.boot:spring-boot-starter-actuator:4.0.1'
+    // Source: https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-bootstrap
+implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap:5.0.0'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'

@@ -8,6 +8,7 @@ import org.example.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.Instant;
+import java.util.Optional;
 import java.util.UUID;
 
 @Builder
@@ -29,6 +30,9 @@ public class RefreshTokenService {
         return refreshTokenRepository.save(refreshToken);
     }
 
+    public Optional<RefreshToken> findByToken(String token){
+        return refreshTokenRepository.findByToken(token);
+    }
     public RefreshToken verifyExpiration (RefreshToken token) {
         if (token.getExpiryDate().compareTo(Instant.now())<0) {
             refreshTokenRepository.delete(token);

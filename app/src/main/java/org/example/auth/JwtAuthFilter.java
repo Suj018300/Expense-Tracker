@@ -1,12 +1,13 @@
 package org.example.auth;
 
 
+import lombok.Data;
+import lombok.AllArgsConstructor;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.example.services.JwtService;
 import org.example.services.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
+@EqualsAndHashCode(callSuper = true)
 @Component
 @AllArgsConstructor
 @Data
