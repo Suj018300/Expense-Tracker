@@ -32,8 +32,12 @@ public class AuthController
     private UserDetailsServiceImpl userDetailsService;
 
     @PostMapping("auth/v1/signup")
-    public ResponseEntity SignUp(@RequestBody UserInfoDto userInfoDto){
+    public ResponseEntity<?> SignUp(@RequestBody UserInfoDto userInfoDto){
+        System.out.println("SIGNUP CONTROLLER HIT");
+
         try{
+            System.out.println("SIGNUP CONTROLLER HIT ___2");
+
             Boolean isSignUpped = userDetailsService.signupUser(userInfoDto);
             if(Boolean.FALSE.equals(isSignUpped)){
                 return new ResponseEntity<>("Already Exist", HttpStatus.BAD_REQUEST);

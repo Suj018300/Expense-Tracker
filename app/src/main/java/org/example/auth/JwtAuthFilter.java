@@ -1,15 +1,16 @@
 package org.example.auth;
 
 
-import lombok.Data;
 import lombok.AllArgsConstructor;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.example.services.JwtService;
 import org.example.services.UserDetailsServiceImpl;
+import org.jspecify.annotations.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -35,9 +36,18 @@ public class JwtAuthFilter extends OncePerRequestFilter
 
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+    protected void doFilterInternal(HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain filterChain)
             throws ServletException, IOException, ServletException
     {
+//        String path = request.getServletPath();
+//
+//        if (path.equals("/auth/v1/login")
+//                || path.equals("/auth/v1/signup")
+//                || path.equals("/auth/v1/refreshToken")) {
+//            filterChain.doFilter(request, response);
+//            return;
+//        }
+
         String authHeader = request.getHeader("Authorization");
         String token = null;
         String username = null;

@@ -32,7 +32,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private final PasswordEncoder passwordEncoder;
 
-    private static final Logger log = (Logger) LoggerFactory.getLogger(UserDetailsServiceImpl.class);
+//    private static final Logger log = (Logger) LoggerFactory.getLogger(UserDetailsServiceImpl.class);
 
     @Override
     public UserDetails loadUserByUsername (String username) throws UsernameNotFoundException {
@@ -41,7 +41,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 //            log.error("User not found: " + username);
             throw new UsernameNotFoundException("Could not found user..!");
         }
-        log.info("User Authenticated successfully");
+//        log.info("User Authenticated successfully");
         return new CustomUserDetail(user);
     }
 

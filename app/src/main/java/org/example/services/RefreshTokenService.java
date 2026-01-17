@@ -6,12 +6,14 @@ import org.example.entities.UserInfo;
 import org.example.repository.RefreshTokenRepository;
 import org.example.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.util.Optional;
 import java.util.UUID;
 
-@Builder
+@Service
 public class RefreshTokenService {
 
     @Autowired
