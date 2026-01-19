@@ -28,14 +28,12 @@ public class CustomUserDetail extends UserInfo implements UserDetails {
         }
         this.authorities = auths;
     }
-    // changes for temporory
+    // changes for temporary
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;
-    }
-
-    ;
+    };
 
     @Override
     public String getPassword() {

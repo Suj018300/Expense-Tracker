@@ -27,16 +27,18 @@ dependencies {
     // Source: https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
     implementation 'org.springframework.boot:spring-boot-starter-web:4.0.1'
     // Source: https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator
-//    implementation 'org.springframework.boot:spring-boot-starter-actuator:4.0.1'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator:4.0.1'
     // Source: https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-bootstrap
     implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap:5.0.0'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-// Source: https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
+    // Source: https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
     implementation 'org.springframework.boot:spring-boot-starter-security:4.0.1'
     // Source: https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-oauth2-resource-server
-//implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server:4.0.1'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server:4.0.1'
     implementation 'org.modelmapper:modelmapper:3.2.6'
+    // Source: https://mvnrepository.com/artifact/org.springframework.kafka/spring-kafka
+    implementation 'org.springframework.kafka:spring-kafka:4.0.1'
     implementation group: 'com.mysql', name: 'mysql-connector-j', version: '9.5.0'
     implementation group: 'org.projectlombok', name:'lombok', version: "$lombokVersion"
     compileOnly group: 'org.projectlombok', name:'lombok', version: "$lombokVersion"

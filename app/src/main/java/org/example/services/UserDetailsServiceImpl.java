@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.example.entities.UserInfo;
+import org.example.eventProducer.UserInfoProducer;
 import org.example.model.UserInfoDto;
 import org.example.repository.UserRepository;
 import org.slf4j.LoggerFactory;
@@ -32,16 +33,19 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private final PasswordEncoder passwordEncoder;
 
-//    private static final Logger log = (Logger) LoggerFactory.getLogger(UserDetailsServiceImpl.class);
+    @Autowired
+    private final UserInfoProducer userInfoProducer;
+
+    private static final Logger log = (Logger) LoggerFactory.getLogger(UserDetailsServiceImpl.class);
 
     @Override
     public UserDetails loadUserByUsername (String username) throws UsernameNotFoundException {
         UserInfo user = userRepository.findByUsername(username);
         if (user == null) {
-//            log.error("User not found: " + username);
+            log.warning("User not found: " + username);
             throw new UsernameNotFoundException("Could not found user..!");
         }
-//        log.info("User Authenticated successfully");
+        log.info("User Authenticated successfully");
         return new CustomUserDetail(user);
     }
 
@@ -61,6 +65,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 userInfoDto.getPassword(),
                 new HashSet<>()
         ));
+        userInfoProducer.sendEventToKafka(userInfoDto);
         return true;
     }
 }

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @AllArgsConstructor
 @RestController
 public class AuthController
@@ -33,10 +34,10 @@ public class AuthController
 
     @PostMapping("auth/v1/signup")
     public ResponseEntity<?> SignUp(@RequestBody UserInfoDto userInfoDto){
-        System.out.println("SIGNUP CONTROLLER HIT");
+//        System.out.println("SIGNUP CONTROLLER HIT");
 
         try{
-            System.out.println("SIGNUP CONTROLLER HIT ___2");
+//            System.out.println("SIGNUP CONTROLLER HIT ___2");
 
             Boolean isSignUpped = userDetailsService.signupUser(userInfoDto);
             if(Boolean.FALSE.equals(isSignUpped)){

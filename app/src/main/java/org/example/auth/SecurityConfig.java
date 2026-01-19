@@ -2,6 +2,7 @@ package org.example.auth;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.example.eventProducer.UserInfoProducer;
 import org.example.repository.UserRepository;
 import org.example.services.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,19 +34,21 @@ import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 //@Data
 public class SecurityConfig {
 
-//    @Autowired
+    @Autowired
     private final PasswordEncoder passwordEncoder;
 
-//    @Autowired
+    @Autowired
     private final UserDetailsServiceImpl userDetailsServiceImpl;
 
+
+    @Autowired
     public SecurityConfig(PasswordEncoder passwordEncoder, UserDetailsServiceImpl userDetailsServiceImpl) {
         this.passwordEncoder = passwordEncoder;
         this.userDetailsServiceImpl = userDetailsServiceImpl;
     }
 
     @Bean
-//    @Autowired
+    @Autowired
     public UserDetailsService userDetailsService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         return new UserDetailsServiceImpl(userRepository, passwordEncoder);
     }
@@ -56,13 +59,14 @@ public class SecurityConfig {
         .csrf(AbstractHttpConfigurer::disable)
         .cors(AbstractHttpConfigurer::disable)
         .formLogin(AbstractHttpConfigurer::disable)
-        .httpBasic(AbstractHttpConfigurer::disable)
+        .httpBasic(Customizer.withDefaults())
         .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .authorizeHttpRequests(auth -> auth
             .requestMatchers("/actuator/**").permitAll()
             .requestMatchers("/auth/v1/signup").permitAll()
             .anyRequest().authenticated()
         )
+                .authenticationProvider(authenticationProvider())
         .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
